@@ -117,7 +117,7 @@ export class MessageBuilder implements IMessageBuilder {
         }
 
         if (!this.msg.attachments[position]) {
-            throw new Error(`No attachment found at the index of "${ position }" to replace.`);
+            throw new Error(`No attachment found at the index of "${position}" to replace.`);
         }
 
         this.msg.attachments[position] = attachment;
@@ -130,7 +130,7 @@ export class MessageBuilder implements IMessageBuilder {
         }
 
         if (!this.msg.attachments[position]) {
-            throw new Error(`No attachment found at the index of "${ position }" to remove.`);
+            throw new Error(`No attachment found at the index of "${position}" to remove.`);
         }
 
         this.msg.attachments.splice(position, 1);
@@ -205,13 +205,13 @@ export class MessageBuilder implements IMessageBuilder {
         if (!this.msg.customFields) {
             this.msg.customFields = {};
         }
-
-        if (this.msg.customFields[key]) {
-            throw new Error(`The message already contains a custom field by the key: ${ key }`);
-        }
+        //to enable multiple updates
+        // if (this.msg.customFields[key]) {
+        //     throw new Error(`The message already contains a custom field by the key: ${ key }`);
+        // }
 
         if (key.includes('.')) {
-            throw new Error(`The given key contains a period, which is not allowed. Key: ${ key }`);
+            throw new Error(`The given key contains a period, which is not allowed. Key: ${key}`);
         }
 
         this.msg.customFields[key] = value;
